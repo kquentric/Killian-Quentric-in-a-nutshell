@@ -2,195 +2,229 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Killian Quentric — Industry Growth Analyst. International finance, industrial strategy, energy & impact." />
-  <title>Killian Quentric · Industry Growth Analyst</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Killian Quentric — Industry Growth Analyst. International finance, industrial strategy, energy & impact." />
+<title>Killian Quentric · Industry Growth Analyst</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <style>
-    :root {
-      --navy:       #0f172a;
-      --navy-mid:   #1e293b;
-      --navy-soft:  #475569;
-      --navy-muted: #94a3b8;
-      --cream:      #faf7f2;
-      --cream-dark: #efe8dc;
-      --gold:       #c6a75e;
-      --gold-light: #e2c98b;
-      --white:      #ffffff;
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans:  'IBM Plex Sans', system-ui, sans-serif;
-    }
+<style>
+:root {
+  --navy: #043D68;
+  --navy-mid: #2c5a85;
+  --navy-soft: #4f7aa3;
+  --navy-muted: #8aa9c2;
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+  --cream: #ffffff;
+  --cream-dark: #eef6fb;
 
-    body {
-      background: var(--cream);
-      color: var(--navy);
-      font-family: var(--font-sans);
-      font-size: 15px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+  --gold: #D3EBFD;
+  --gold-light: #e8f4fd;
 
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1000;
-    }
+  --white: #ffffff;
 
-    .topbar {
-      background: var(--navy);
-      padding: 10px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+}
 
-    .topbar-badge {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-    }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-    .topbar-right {
-      font-size: 11px;
-      color: rgba(255,255,255,0.4);
-    }
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-    .page {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+.topbar {
+  background: var(--navy);
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+}
 
-    header { padding: 52px 0 40px; }
+.topbar-badge {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
 
-    .header-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-      opacity: 0;
-      animation: fadeUp 0.55s ease 0.05s forwards;
-    }
+.topbar-right {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+}
 
-    h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(48px, 10vw, 78px);
-      letter-spacing: -0.025em;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.15s forwards;
-    }
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-    h1 span { font-style: italic; color: var(--gold); }
+header { padding: 52px 0 40px; }
 
-    .role-line {
-      margin-top: 16px;
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy-soft);
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.27s forwards;
-    }
+.header-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.05s forwards;
+}
 
-    .focus-line {
-      margin-top: 10px;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.33s forwards;
-    }
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 10vw, 78px);
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.15s forwards;
+}
 
-    .header-divider {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin: 24px 0;
-    }
+h1 span { color: var(--navy); }
 
-    .summary {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      color: var(--navy-soft);
-      max-width: 580px;
-    }
+.role-line {
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy-soft);
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.27s forwards;
+}
 
-    .cta-section {
-      padding: 36px 0;
-      border-top: 1px solid var(--cream-dark);
-    }
+.focus-line {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.33s forwards;
+}
 
-    .cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+.header-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 24px 0;
+}
 
-    .btn {
-      display: flex;
-      justify-content: center;
-      padding: 13px;
-      font-size: 11.5px;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      cursor: pointer;
-    }
+.summary {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--navy-soft);
+  max-width: 580px;
+}
 
-    .btn-primary {
-      background: var(--navy);
-      color: var(--cream);
-      grid-column: 1 / -1;
-    }
+.cta-section {
+  padding: 36px 0;
+  border-top: 1px solid var(--cream-dark);
+}
 
-    .btn-secondary {
-      border: 1px solid var(--cream-dark);
-      color: var(--navy-soft);
-    }
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 
-    .section {
-      padding: 36px 0;
-      border-top: 1px solid var(--cream-dark);
-    }
+.btn {
+  display: flex;
+  justify-content: center;
+  padding: 13px;
+  font-size: 11.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
 
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--navy-muted);
-      margin-bottom: 20px;
-    }
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+  grid-column: 1 / -1;
+}
 
-    footer {
-      padding: 24px 0 44px;
-      border-top: 1px solid var(--cream-dark);
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      color: var(--navy-muted);
-    }
+.btn-secondary {
+  border: 1px solid var(--cream-dark);
+  color: var(--navy-soft);
+}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+.section {
+  padding: 36px 0;
+  border-top: 1px solid var(--cream-dark);
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+  margin-bottom: 20px;
+}
+
+/* KEEP ALL ORIGINAL STRUCTURE BELOW */
+
+.skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.skill-tag {
+  font-size: 12px;
+  padding: 5px 13px;
+  border: 1px solid var(--cream-dark);
+  background: var(--white);
+  color: var(--navy-soft);
+}
+
+.exp-list { display: flex; flex-direction: column; gap: 28px; }
+
+.exp-title { font-family: var(--font-serif); font-weight: 700; }
+.exp-date { font-size: 11px; color: var(--navy-mid); }
+
+.exp-company {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--navy-soft);
+  margin-bottom: 8px;
+}
+
+.exp-bullets { padding-left: 16px; }
+
+.edu-item { display: flex; justify-content: space-between; margin-bottom: 18px; }
+
+.edu-degree { font-family: var(--font-serif); font-weight: 700; }
+
+.project-item { margin-bottom: 14px; }
+
+.hobbies-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.hobby-tag {
+  font-size: 12px;
+  padding: 5px 13px;
+  background: var(--cream-dark);
+}
+
+footer {
+  padding: 24px 0 44px;
+  border-top: 1px solid var(--cream-dark);
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--navy-muted);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
 
 </head>
 
@@ -211,9 +245,8 @@
   <div class="header-divider"></div>
 
   <p class="summary">
-    Driven by investments that combine <strong>long-term value creation and strategic impact</strong>
-    across energy, environment and industrial sectors. Experienced through three internships supporting 
-    C-level executives — <strong>available immediately for a full-time role</strong>.
+    Passionate about investments combining long-term vision and real-world impact across energy, environment and industry. 
+    Three experiences supporting executive teams — available immediately for a full-time role.
   </p>
 </header>
 
@@ -221,8 +254,8 @@
   <div class="cta-grid">
     <a href="./CV.pdf" target="_blank" class="btn btn-primary">View full resume</a>
     <a href="./CV.pdf" download class="btn btn-secondary">Download resume</a>
-    <a href="https://www.linkedin.com" target="_blank" class="btn btn-secondary">LinkedIn</a>
-    <button class="btn btn-secondary" onclick="navigator.clipboard.writeText('killian.quentric@dauphine.eu')">Contact</button>
+    <a href="https://www.linkedin.com/in/killian-quentric-2424bb187" target="_blank" class="btn btn-secondary">LinkedIn</a>
+    <button class="btn btn-secondary" onclick="copyEmail()">Contact</button>
   </div>
 </section>
 
@@ -233,8 +266,16 @@
 
 </main>
 
+<div class="toast" id="toast">Email copied ✓</div>
+
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+function copyEmail(){
+  navigator.clipboard.writeText("killian.quentric@dauphine.eu");
+  const t=document.getElementById("toast");
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2000);
+}
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
