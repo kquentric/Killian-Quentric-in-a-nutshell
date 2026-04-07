@@ -1,281 +1,688 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Killian Quentric — Industry Growth Analyst. International finance, industrial strategy, energy & impact." />
-<title>Killian Quentric · Industry Growth Analyst</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Killian Quentric — Analyste Croissance PE Industrie. Finance internationale, stratégie industrielle, énergie & impact." />
+  <title>Killian Quentric · Analyste Croissance PE Industrie</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--
+    "Killian"  → IBM Plex Sans (same as body, clean & corporate)
+    "Quentric" → Cormorant Garamond italic, distinct & refined
+    Body       → IBM Plex Sans
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-<style>
-:root {
-  --navy: #043D68;
-  --navy-mid: #2c5a85;
-  --navy-soft: #4f7aa3;
-  --navy-muted: #8aa9c2;
+  <style>
+    /* ── TOKENS ────────────────────────────────── */
+    :root {
+      /* blues from the CV's identity */
+      --navy:        #043D68;
+      --navy-mid:    #1a5a8a;
+      --navy-soft:   #3f7aaa;
+      --navy-muted:  #7aaac8;
 
-  --cream: #ffffff;
-  --cream-dark: #eef6fb;
+      /* background: pure white like the CV */
+      --bg:          #ffffff;
+      --bg-subtle:   #f4f8fb;
+      --border:      #dde8f0;
 
-  --gold: #D3EBFD;
-  --gold-light: #e8f4fd;
+      /* silver accent — replaces gold entirely */
+      --silver:      #8a9db5;        /* medium, used for accents */
+      --silver-light:#b8c8d8;        /* dividers, tag borders    */
+      --silver-dark: #5a6e82;        /* stronger accent text     */
 
-  --white: #ffffff;
+      --white:       #ffffff;
 
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
-}
+      --font-display: 'Cormorant Garamond', Georgia, serif;   /* surname only */
+      --font-sans:    'IBM Plex Sans', system-ui, sans-serif;
+    }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-body {
-  background: var(--cream);
-  color: var(--navy);
-  font-family: var(--font-sans);
-  font-size: 14.5px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+    body {
+      background: var(--bg);
+      color: var(--navy);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-.topbar {
-  background: var(--navy);
-  padding: 10px 24px;
-  display: flex;
-  justify-content: space-between;
-}
+    /* ── TOP STATUS BAR ─────────────────────────── */
+    .topbar {
+      background: var(--navy);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
 
-.topbar-badge {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-}
+    .topbar-badge {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
 
-.topbar-right {
-  font-size: 11px;
-  color: rgba(255,255,255,0.5);
-}
+    /* subtle silver dot instead of gold bullet */
+    .topbar-badge::before {
+      content: '● ';
+      font-size: 7px;
+      color: var(--silver-light);
+    }
 
-.page {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+    .topbar-right {
+      font-size: 11px;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.06em;
+    }
 
-header { padding: 52px 0 40px; }
+    /* ── LAYOUT ─────────────────────────────────── */
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-.header-eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--navy-mid);
-  margin-bottom: 16px;
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.05s forwards;
-}
+    /* ── HERO ───────────────────────────────────── */
+    header { padding: 52px 0 40px; }
 
-h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(48px, 10vw, 78px);
-  letter-spacing: -0.02em;
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.15s forwards;
-}
+    .header-eyebrow {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--silver-dark);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeUp 0.55s ease 0.05s forwards;
+    }
 
-h1 span { color: var(--navy); }
+    /* Two-line name: first name plain sans, surname italic display */
+    h1 {
+      font-size: clamp(46px, 10vw, 76px);
+      font-weight: 300;
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      color: var(--navy);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.15s forwards;
+    }
 
-.role-line {
-  margin-top: 16px;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--navy-soft);
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.27s forwards;
-}
+    .h1-first {
+      display: block;
+      font-family: var(--font-sans);
+      font-weight: 300;
+      color: var(--navy);
+    }
 
-.focus-line {
-  margin-top: 10px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--navy);
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.33s forwards;
-}
+    .h1-last {
+      display: block;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      /* silver-tinted navy — not gold, not pure black */
+      color: var(--navy-mid);
+      letter-spacing: 0.01em;
+    }
 
-.header-divider {
-  width: 48px;
-  height: 2px;
-  background: var(--gold);
-  margin: 24px 0;
-}
+    .role-line {
+      margin-top: 18px;
+      font-size: 12.5px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.27s forwards;
+    }
 
-.summary {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  color: var(--navy-soft);
-  max-width: 580px;
-}
+    /* Silver rule — very restrained */
+    .header-divider {
+      width: 36px;
+      height: 1px;
+      background: var(--silver-light);
+      margin: 22px 0;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.38s forwards;
+    }
 
-.cta-section {
-  padding: 36px 0;
-  border-top: 1px solid var(--cream-dark);
-}
+    .summary {
+      font-family: var(--font-sans);
+      font-size: clamp(14.5px, 2.8vw, 17px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--navy-soft);
+      max-width: 580px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.45s forwards;
+    }
 
-.cta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
+    .summary strong { color: var(--navy); font-weight: 500; }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  padding: 13px;
-  font-size: 11.5px;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
+    /* ── CTAs ───────────────────────────────────── */
+    .cta-section {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+    }
 
-.btn-primary {
-  background: var(--navy);
-  color: var(--white);
-  grid-column: 1 / -1;
-}
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
 
-.btn-secondary {
-  border: 1px solid var(--cream-dark);
-  color: var(--navy-soft);
-}
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      white-space: nowrap;
+      background: none;
+    }
 
-.section {
-  padding: 36px 0;
-  border-top: 1px solid var(--cream-dark);
-}
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(4,61,104,0.1); }
+    .btn:active { transform: translateY(0); }
 
-.section-label {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--navy-muted);
-  margin-bottom: 20px;
-}
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      grid-column: 1 / -1;
+    }
 
-/* KEEP ALL ORIGINAL STRUCTURE BELOW */
+    .btn-primary:hover {
+      background: var(--navy-mid);
+      border-color: var(--navy-mid);
+    }
 
-.skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn-secondary {
+      color: var(--navy-soft);
+      border-color: var(--border);
+    }
 
-.skill-tag {
-  font-size: 12px;
-  padding: 5px 13px;
-  border: 1px solid var(--cream-dark);
-  background: var(--white);
-  color: var(--navy-soft);
-}
+    .btn-secondary:hover {
+      border-color: var(--silver);
+      color: var(--navy);
+      background: var(--bg-subtle);
+    }
 
-.exp-list { display: flex; flex-direction: column; gap: 28px; }
+    /* ── SECTIONS ───────────────────────────────── */
+    .section {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+    }
 
-.exp-title { font-family: var(--font-serif); font-weight: 700; }
-.exp-date { font-size: 11px; color: var(--navy-mid); }
+    .section-label {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--navy-muted);
+      margin-bottom: 20px;
+    }
 
-.exp-company {
-  font-size: 12px;
-  text-transform: uppercase;
-  color: var(--navy-soft);
-  margin-bottom: 8px;
-}
+    /* ── SKILLS ─────────────────────────────────── */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 
-.exp-bullets { padding-left: 16px; }
+    .skill-tag {
+      font-size: 11.5px;
+      font-weight: 400;
+      padding: 5px 13px;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--navy-soft);
+      border-radius: 2px;
+      cursor: default;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
 
-.edu-item { display: flex; justify-content: space-between; margin-bottom: 18px; }
+    .skill-tag:hover { border-color: var(--silver); color: var(--navy); background: var(--white); }
 
-.edu-degree { font-family: var(--font-serif); font-weight: 700; }
+    /* language tags: silver-tinted border */
+    .skill-tag.lang {
+      border-color: var(--silver-light);
+      background: var(--white);
+      color: var(--silver-dark);
+    }
 
-.project-item { margin-bottom: 14px; }
+    /* ── EXPERIENCE ─────────────────────────────── */
+    .exp-list { display: flex; flex-direction: column; gap: 28px; }
 
-.hobbies-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .exp-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
 
-.hobby-tag {
-  font-size: 12px;
-  padding: 5px 13px;
-  background: var(--cream-dark);
-}
+    .exp-title {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.3;
+    }
 
-footer {
-  padding: 24px 0 44px;
-  border-top: 1px solid var(--cream-dark);
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  color: var(--navy-muted);
-}
+    .exp-date {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      color: var(--silver-dark);
+      white-space: nowrap;
+      text-align: right;
+    }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-</style>
+    .exp-company {
+      font-size: 11.5px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      margin-bottom: 8px;
+    }
 
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+
+    .exp-bullets li {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--navy-soft);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--silver);
+    }
+
+    /* ── EDUCATION ──────────────────────────────── */
+    .edu-list { display: flex; flex-direction: column; gap: 18px; }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2px 12px;
+      align-items: start;
+    }
+
+    .edu-degree {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    .edu-school {
+      font-size: 11.5px;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      margin-top: 2px;
+    }
+
+    .edu-detail {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--navy-muted);
+      margin-top: 3px;
+      line-height: 1.45;
+    }
+
+    .edu-date {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--silver-dark);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ── PROJECTS ───────────────────────────────── */
+    .project-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .project-icon { color: var(--silver); font-size: 12px; margin-top: 4px; font-style: normal; }
+
+    .project-text {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--navy-soft);
+      line-height: 1.5;
+    }
+
+    .project-text strong { color: var(--navy); font-weight: 500; }
+
+    /* ── HOBBIES ────────────────────────────────── */
+    .hobbies-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .hobby-tag {
+      font-size: 12px;
+      font-weight: 300;
+      padding: 5px 13px;
+      background: var(--bg-subtle);
+      color: var(--navy-soft);
+      border-radius: 2px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      padding: 24px 0 44px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-note {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy-muted);
+    }
+
+    /* ── TOAST ──────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--navy);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 10px 22px;
+      border-radius: 40px;
+      z-index: 999;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.35s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 480px) {
+      .cta-grid { grid-template-columns: 1fr; }
+      .btn-primary { grid-column: auto; }
+      .exp-header { grid-template-columns: 1fr; }
+      .exp-date { text-align: left; }
+      .edu-item { grid-template-columns: 1fr; }
+      .edu-date { text-align: left; }
+    }
+  </style>
 </head>
-
 <body>
 
+<!-- ── TOP BAR ── -->
 <div class="topbar">
-  <span class="topbar-badge">Available immediately — Full-time</span>
-  <span class="topbar-right">Paris · Bordeaux</span>
+  <span class="topbar-badge">Disponible immédiatement — CDI</span>
+  <span class="topbar-right">Paris · Mobilité géographique</span>
 </div>
 
 <main class="page">
 
-<header>
-  <p class="header-eyebrow">International Finance · Industrial Strategy</p>
-  <h1>Killian<br><span>Quentric</span></h1>
-  <p class="role-line">Industry Growth Analyst</p>
-  <p class="focus-line">Energy · Industrial Tech · Infrastructure · Commodities · Impact</p>
-  <div class="header-divider"></div>
+  <!-- ── HERO ── -->
+  <header>
+    <p class="header-eyebrow">Finance Internationale · Stratégie Industrielle</p>
+    <h1>
+      <span class="h1-first">Killian</span>
+      <span class="h1-last">Quentric</span>
+    </h1>
+    <p class="role-line">Analyste Croissance PE &amp; Industrie</p>
+    <div class="header-divider"></div>
+    <p class="summary">
+      Passionné par les investissements qui allient <strong>progrès humain et vision long-terme</strong>
+      dans l'énergie, l'environnement et l'industrie. Trois stages en directions générales internationales
+      — disponible immédiatement pour un poste d'<strong>Analyste Growth / Industrie / Impact (CDI)</strong>.
+    </p>
+  </header>
 
-  <p class="summary">
-    Passionate about investments combining long-term vision and real-world impact across energy, environment and industry. 
-    Three experiences supporting executive teams — available immediately for a full-time role.
-  </p>
-</header>
+  <!-- ── CTAs ── -->
+  <section class="cta-section animate-in">
+    <div class="cta-grid">
+      <a href="./CV.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+        ↗&nbsp;&nbsp;Voir le CV complet
+      </a>
+      <a href="./CV.pdf" download="CV_Killian_Quentric.pdf" class="btn btn-secondary">
+        ↓&nbsp;&nbsp;Télécharger le CV
+      </a>
+      <a href="https://www.linkedin.com/in/killian-quentric-2424bb187" target="_blank" rel="noopener" class="btn btn-secondary">
+        in&nbsp;&nbsp;LinkedIn
+      </a>
+      <button class="btn btn-secondary" onclick="copyEmail(event)" data-email="killian.quentric@dauphine.eu">
+        ✉&nbsp;&nbsp;M'écrire
+      </button>
+    </div>
+  </section>
 
-<section class="cta-section">
-  <div class="cta-grid">
-    <a href="./CV.pdf" target="_blank" class="btn btn-primary">View full resume</a>
-    <a href="./CV.pdf" download class="btn btn-secondary">Download resume</a>
-    <a href="https://www.linkedin.com/in/killian-quentric-2424bb187" target="_blank" class="btn btn-secondary">LinkedIn</a>
-    <button class="btn btn-secondary" onclick="copyEmail()">Contact</button>
-  </div>
-</section>
+  <!-- ── COMPÉTENCES ── -->
+  <section class="section animate-in">
+    <p class="section-label">Compétences</p>
+    <div class="skills-grid">
+      <span class="skill-tag lang">Français — natif</span>
+      <span class="skill-tag lang">Anglais — courant (TOEIC 980)</span>
+      <span class="skill-tag lang">Allemand — courant</span>
+      <span class="skill-tag">Modélisation financière</span>
+      <span class="skill-tag">Analyse M&amp;A</span>
+      <span class="skill-tag">Stratégie industrielle</span>
+      <span class="skill-tag">Due diligence</span>
+      <span class="skill-tag">Marchés de l'énergie</span>
+      <span class="skill-tag">Excel · Power BI</span>
+      <span class="skill-tag">R · STATA · Python · VBA</span>
+      <span class="skill-tag">LLM prompting</span>
+      <span class="skill-tag">Adobe</span>
+    </div>
+  </section>
 
-<footer>
-  <span>killian.quentric@dauphine.eu · +33 7 86 48 51 26</span>
-  <span id="year"></span>
-</footer>
+  <!-- ── EXPÉRIENCES ── -->
+  <section class="section animate-in">
+    <p class="section-label">Expériences professionnelles</p>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-title">Analyste Corporate Strategy</span>
+          <span class="exp-date">Juil – Déc 2025</span>
+        </div>
+        <p class="exp-company">Veolia — Direction Générale Groupe · Stage 6 mois</p>
+        <ul class="exp-bullets">
+          <li>Études financières et de marché sur des actifs énergétiques (flexibilité électrique, décarbonation)</li>
+          <li>Construction de modèles financiers (TRI, VAN) pour des projets d'usines de traitement de déchets aux États-Unis</li>
+          <li>Support de 2 BUs en analyses de croissance, sourcing M&amp;A et reportings (acquisition Clean Earth)</li>
+          <li>Préparation de documents stratégiques pour le séminaire annuel du Comex</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-title">Consultant Externe</span>
+          <span class="exp-date">Juil – Oct 2025</span>
+        </div>
+        <p class="exp-company">Chaumet – LVMH · Mission 4 mois</p>
+        <ul class="exp-bullets">
+          <li>Pilotage d'une étude sur l'écosystème e-commerce chinois pour la haute joaillerie</li>
+          <li>Analyse des pratiques digitales et formulation de recommandations stratégiques</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-title">Analyste Medtech Innovation &amp; Marketing</span>
+          <span class="exp-date">Jan – Juin 2024</span>
+        </div>
+        <p class="exp-company">Saint-Gobain — Life Science Division · Stage 6 mois</p>
+        <ul class="exp-bullets">
+          <li>Identification de leviers de croissance dans la chirurgie mini-invasive (LAAC, bariatrique)</li>
+          <li>Représentation de la BU au salon Medtec Live — +50 % de leads générés</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-title">Chargé de Partenariats Internationaux</span>
+          <span class="exp-date">Juil – Déc 2023</span>
+        </div>
+        <p class="exp-company">Crédit Agricole Assurances — Direction Internationale · Stage 6 mois</p>
+        <ul class="exp-bullets">
+          <li>Support de due diligence et sourcing de prospects pour le marché allemand (assurance emprunteur)</li>
+          <li>Rédaction de notes conjoncturelles sur l'économie européenne</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FORMATION ── -->
+  <section class="section animate-in">
+    <p class="section-label">Formation</p>
+    <div class="edu-list">
+
+      <div class="edu-item">
+        <div>
+          <p class="edu-degree">MSc Finance Internationale &amp; Matières Premières</p>
+          <p class="edu-school">Université Paris Dauphine – PSL</p>
+          <p class="edu-detail">Marchés de l'énergie, économétrie avancée, finance de projet, couverture des risques matières premières, géopolitique</p>
+        </div>
+        <span class="edu-date">2022 – 2025</span>
+      </div>
+
+      <div class="edu-item">
+        <div>
+          <p class="edu-degree">Double Licence franco-allemande Économie-Gestion</p>
+          <p class="edu-school">IAE Annecy / Fachhochschule Kiel</p>
+          <p class="edu-detail">Finance d'entreprise, stratégie, macroéconomie, contrôle de gestion</p>
+        </div>
+        <span class="edu-date">2019 – 2022</span>
+      </div>
+
+      <div class="edu-item">
+        <div>
+          <p class="edu-degree">Double Baccalauréat franco-allemand (Abibac)</p>
+          <p class="edu-school">Lycée Pape Clément, Pessac</p>
+          <p class="edu-detail">Spécialité mathématiques — mention très bien (note 1,0)</p>
+        </div>
+        <span class="edu-date">2015 – 2018</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PROJETS ── -->
+  <section class="section animate-in">
+    <p class="section-label">Projets &amp; distinctions</p>
+    <div class="project-list">
+      <div class="project-item">
+        <em class="project-icon">↗</em>
+        <p class="project-text"><strong>European Student Assembly 2023</strong> — Membre du panel sur la réconciliation franco-allemande, recommandations au Parlement Européen</p>
+      </div>
+      <div class="project-item">
+        <em class="project-icon">↗</em>
+        <p class="project-text"><strong>1er Prix Tour du Mont Blanc Erasmus+ 2021</strong> — Lauréat du concours vidéo, présentation à l'agence exécutive européenne (EACEA)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CENTRES D'INTÉRÊT ── -->
+  <section class="section animate-in">
+    <p class="section-label">Centres d'intérêt</p>
+    <div class="hobbies-grid">
+      <span class="hobby-tag">Voile — Glénans niv. 4/5</span>
+      <span class="hobby-tag">Randonnée — GR10, TMB</span>
+      <span class="hobby-tag">Guitare — 15 ans, conservatoire</span>
+      <span class="hobby-tag">Ski</span>
+      <span class="hobby-tag">Badminton</span>
+      <span class="hobby-tag">Animation jeunesse UCPA — 10+ séjours</span>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="animate-in">
+    <span class="footer-note">killian.quentric@dauphine.eu &nbsp;·&nbsp; +33 7 86 48 51 26</span>
+    <span class="footer-note" id="year"></span>
+  </footer>
 
 </main>
 
-<div class="toast" id="toast">Email copied ✓</div>
+<div class="toast" id="toast">Email copié ✓</div>
 
 <script>
-function copyEmail(){
-  navigator.clipboard.writeText("killian.quentric@dauphine.eu");
-  const t=document.getElementById("toast");
-  t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"),2000);
-}
-document.getElementById('year').textContent = new Date().getFullYear();
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function copyEmail(e) {
+    const email = e.currentTarget.dataset.email;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(email).then(showToast);
+    } else {
+      window.location.href = 'mailto:' + email;
+    }
+  }
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  document.querySelectorAll('.skill-tag').forEach((tag, i) => {
+    tag.style.transitionDelay = i * 30 + 'ms';
+  });
 </script>
 
 </body>
