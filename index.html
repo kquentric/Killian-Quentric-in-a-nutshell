@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Killian Quentric — Analyste Croissance Industrie. Finance internationale, stratégie industrielle, énergie & impact." />
+  <meta name="description" content="Killian Quentric — Analyste Croissance PE Industrie. Finance internationale, stratégie industrielle, énergie & impact." />
   <title>Killian Quentric · Analyste Croissance PE Industrie</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,13 +50,13 @@
       gap: 12px;
     }
     .topbar-badge {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.75);
     }
-    .topbar-badge::before { content: '● '; font-size: 7px; color: var(--silver-light); }
+    .topbar-badge::before { content: ''; }
     .topbar-right {
       font-size: 11px;
       color: rgba(255,255,255,0.38);
@@ -82,8 +82,8 @@
     /* Photo container */
     .hero-photo {
       flex-shrink: 0;
-      width: 92px;
-      height: 92px;
+      width: 104px;
+      height: 104px;
       margin-top: 6px; /* align with name baseline */
       opacity: 0;
       animation: fadeUp 0.7s ease 0.5s forwards;
@@ -216,9 +216,9 @@
     /* ── SECTIONS ── */
     .section { padding: 36px 0; border-top: 1px solid var(--border); }
     .section-label {
-      font-size: 9.5px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--navy-muted);
       margin-bottom: 20px;
@@ -310,7 +310,7 @@
 
 <div class="topbar">
   <span class="topbar-badge">Disponible immédiatement — CDI</span>
-  <span class="topbar-right">Paris · Mobilité géographique</span>
+  <span class="topbar-right">Paris — Mobile Géographiquement</span>
 </div>
 
 <main class="page">
@@ -463,7 +463,7 @@
   </section>
 
   <footer class="animate-in">
-    <span class="footer-note">killian.quentric@dauphine.eu &nbsp;·&nbsp; +33 7 86 48 51 26</span>
+    <span class="footer-note"><a href="mailto:killian.quentric@dauphine.eu" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">killian.quentric@dauphine.eu</a> &nbsp;·&nbsp; <a href="tel:+33786485126" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border);">+33 7 86 48 51 26</a></span>
     <span class="footer-note" id="year"></span>
   </footer>
 
@@ -471,7 +471,7 @@
 
 <div class="toast" id="toast">Email copié ✓</div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const observer = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.08 }
@@ -487,14 +487,4 @@
   }
 
   function showToast() {
-    const t = document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2400);
-  }
-
-  document.querySelectorAll('.skill-tag').forEach((tag, i) => {
-    tag.style.transitionDelay = i * 30 + 'ms';
-  });
-</script>
-</body>
-</html>
+    const t = document.getElementById('toa
